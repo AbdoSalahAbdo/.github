@@ -19,8 +19,8 @@ jobs:
           git diff --name-status ${{ github.event.before }} ${{ github.sha }} | wc -l > count.txt
           echo "::set-output name=count::$(cat count.txt)"
       
-      - name: Post a comment if PR exceeds 15 files
-        if: env.PR_FILES > 15
+      - name: Post a comment if PR exceeds 1 files
+        if: env.PR_FILES > 1
         run: |
           gh pr comment ${{ github.event.pull_request.number }} --body "This PR contains **${{ env.PR_FILES }}** files, which is more than the allowed limit of 15 files. Please split it into smaller PRs for easier review."
 
