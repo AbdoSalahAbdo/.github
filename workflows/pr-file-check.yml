@@ -24,9 +24,9 @@ jobs:
         run: |
           gh pr comment ${{ github.event.pull_request.number }} --body "This PR contains **${{ env.PR_FILES }}** files, which is more than the allowed limit of 15 files. Please split it into smaller PRs for easier review."
 
-      - name: Fail if more than 15 files changed
+      - name: Fail if more than 1 files changed
         run: |
-          if [ "${{ steps.count_files.outputs.count }}" -gt 15 ]; then
+          if [ "${{ steps.count_files.outputs.count }}" -gt 1 ]; then
             echo "Error: More than 15 files changed in the PR!"
             exit 1
           fi
